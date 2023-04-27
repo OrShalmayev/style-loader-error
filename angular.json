@@ -17,10 +17,6 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "customWebpackConfig": {
-              "path": "./config/library.webpack-config.js",
-              "mergeRules": {}
-            },
             "outputPath": "dist/ng-15",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -42,7 +38,12 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "./config/library.webpack-config.js",
+              "libraryName": "overview",
+              "libraryTarget": "system"
+            }
           },
           "configurations": {
             "production": {
@@ -72,7 +73,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:browser",
           "configurations": {
             "production": {
               "browserTarget": "ng-15:build:production"
